@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OI生涯回忆录 - 信息学竞赛成长模拟游戏</title>
+    <meta name="description" content="一个模拟信息学竞赛(OI)选手从新手到高手成长历程的HTML5游戏">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OI生涯回忆录</h1>
+            <p class="subtitle">从萌新到金牌选手的成长之路</p>
+            <div class="github-badge">
+                <a href="https://github.com/yourusername/OI-Career-Game" target="_blank">
+                    <img src="https://img.shields.io/github/stars/yourusername/OI-Career-Game?style=social" alt="GitHub stars">
+                </a>
+                <a href="https://github.com/yourusername/OI-Career-Game/fork" target="_blank">
+                    <img src="https://img.shields.io/github/forks/yourusername/OI-Career-Game?style=social" alt="GitHub forks">
+                </a>
+            </div>
+        </header>
+        
+        <div class="game-area">
+            <div class="player-info">
+                <h2>选手信息</h2>
+                <div class="player-stats">
+                    <div class="stat">
+                        <div>等级</div>
+                        <div class="stat-value" id="level">1</div>
+                    </div>
+                    <div class="stat">
+                        <div>经验值</div>
+                        <div class="stat-value" id="exp">0/100</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="exp-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="stat">
+                        <div>算法能力</div>
+                        <div class="stat-value" id="algorithm">10</div>
+                    </div>
+                    <div class="stat">
+                        <div>代码能力</div>
+                        <div class="stat-value" id="coding">10</div>
+                    </div>
+                    <div class="stat">
+                        <div>调试能力</div>
+                        <div class="stat-value" id="debugging">8</div>
+                    </div>
+                    <div class="stat">
+                        <div>比赛经验</div>
+                        <div class="stat-value" id="contest-exp">5</div>
+                    </div>
+                    <div class="stat">
+                        <div>体力值</div>
+                        <div class="stat-value" id="energy">100/100</div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 20px;">成就</h3>
+                <div class="achievements">
+                    <div class="achievement" id="ach-1" title="初学者 - 达到5级">🌱</div>
+                    <div class="achievement" id="ach-2" title="学习者 - 解决10道题目">📚</div>
+                    <div class="achievement" id="ach-3" title="竞争者 - 参加5场比赛">⚔️</div>
+                    <div class="achievement" id="ach-4" title="冠军 - NOI第一名">🏆</div>
+                    <div class="achievement" id="ach-5" title="大师 - 达到20级">🌟</div>
+                </div>
+            </div>
+            
+            <div class="game-content">
+                <div class="tabs">
+                    <div class="tab active" data-tab="learn">学习</div>
+                    <div class="tab" data-tab="practice">练习</div>
+                    <div class="tab" data-tab="contest">比赛</div>
+                    <div class="tab" data-tab="shop">资源</div>
+                </div>
+                
+                <div class="tab-content active" id="learn-tab">
+                    <h3>学习算法与数据结构</h3>
+                    <p>选择要学习的内容：</p>
+                    <div class="actions">
+                        <button id="learn-basic">基础语法</button>
+                        <button id="learn-array">数组与字符串</button>
+                        <button id="learn-sort">排序算法</button>
+                        <button id="learn-search">搜索算法</button>
+                        <button id="learn-dp">动态规划</button>
+                        <button id="learn-graph">图论</button>
+                        <button id="learn-math">数学</button>
+                        <button id="learn-ds">数据结构</button>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="practice-tab">
+                    <h3>刷题练习</h3>
+                    <p>选择题目难度：</p>
+                    <div class="actions">
+                        <button id="practice-easy">入门题</button>
+                        <button id="practice-medium">普及题</button>
+                        <button id="practice-hard">提高题</button>
+                        <button id="practice-very-hard">省选/NOI</button>
+                    </div>
+                    
+                    <div id="problem-list" style="margin-top: 20px;">
+                        <!-- 题目列表会动态生成 -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="contest-tab">
+                    <h3>参加比赛</h3>
+                    <p>选择要参加的比赛：</p>
+                    <div class="actions">
+                        <button id="contest-school">校内赛</button>
+                        <button id="contest-local">地区赛</button>
+                        <button id="contest-province">省选</button>
+                        <button id="contest-noip">NOIP</button>
+                        <button id="contest-noi">NOI</button>
+                    </div>
+                    
+                    <div id="contest-info" style="margin-top: 20px;">
+                        <!-- 比赛信息会动态生成 -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="shop-tab">
+                    <h3>资源与工具</h3>
+                    <p>购买资源提升能力：</p>
+                    <div class="actions">
+                        <button id="buy-book">算法书</button>
+                        <button id="buy-ide">更好的IDE</button>
+                        <button id="buy-pc">高性能电脑</button>
+                        <button id="buy-course">在线课程</button>
+                        <button id="rest-energy">恢复体力</button>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <p>金币: <span id="coins">100</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="event-log">
+            <h3>生涯日志</h3>
+            <div id="log-container">
+                <div class="log-entry">
+                    <div class="log-time">Day 1</div>
+                    <div>欢迎来到OI的世界！你刚刚开始学习编程。</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>Made with ❤️ for OIers | 
+                    <a href="https://github.com/yourusername/OI-Career-Game" target="_blank">GitHub</a> | 
+                    <a href="https://github.com/yourusername/OI-Career-Game/issues" target="_blank">报告问题</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/js/game.js"></script>
+</body>
+</html>
